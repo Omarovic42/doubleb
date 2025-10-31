@@ -259,3 +259,19 @@ document.querySelectorAll('a[href^="tel:"]').forEach(link => {
         trackEvent('click', 'contact', 'phone_call');
     });
 });
+
+// Fonction pour le bouton Commander
+document.addEventListener('DOMContentLoaded', function() {
+    const commanderBtn = document.querySelector('.commander-btn');
+    const commanderSection = document.querySelector('.commander-section');
+    
+    if (commanderBtn && commanderSection) {
+        commanderBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            commanderSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    }
+});
