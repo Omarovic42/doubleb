@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <meta name="theme-color" content="#921a1c">
+    <meta name="color-scheme" content="light">
     <title>Double B - Restaurant Fast-Food</title>
     <link rel="stylesheet" href="styles_Version2_new.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
@@ -31,6 +33,11 @@
             <ul class="nav__list">
                 <li class="nav__item"><a href="#hero" class="nav__link">Accueil</a></li>
                 <li class="nav__item"><a href="#tacos" class="nav__link">Nos Tacos</a></li>
+                <li class="nav__item"><a href="#sandwichs" class="nav__link">Nos Sandwichs</a></li>
+                <li class="nav__item"><a href="#burgers" class="nav__link">Nos Burgers</a></li>
+                <li class="nav__item"><a href="#bowls" class="nav__link">Nos Bowls</a></li>
+                <li class="nav__item"><a href="#pizzas" class="nav__link">Nos Pizzas</a></li>
+                <li class="nav__item"><a href="#assiettes-salades" class="nav__link">Assiettes & Salades</a></li>
                 <li class="nav__item"><a href="#contact" class="nav__link">Contactez-nous</a></li>
                 <li class="nav__item"><a href="#commander" class="nav__link">Commandez en ligne</a></li>
             </ul>
@@ -51,7 +58,9 @@
             <h1 class="hero-title">DOUBLE <span style="color: #8B1538">B</span></h1>
             <div class="restaurant-info">
                 <p><i class="fas fa-map-marker-alt"></i> 1 Rue Tiblier Verne, 42000 Saint-Étienne</p>
-                <p><i class="fas fa-clock"></i> Ouvert 7j/7 - 18h30 à 00h30</p>
+                <p><i class="fas fa-clock"></i> Ouvert 7j/7 - 11h30 à 14h & 18h30 à 00h30</p>
+                <p><i class="fas fa-times"></i> Fermé les vendredis et dimanches midi</p>
+
                 <a href="#commander" class="commander-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span>COMMANDER</span>
@@ -81,7 +90,7 @@
                 </div>
             </div>
             
-            <div class="tacos-section-content category-content" id="tacos-section-content">
+            <div class="tacos-section-content category-content collapsed" id="tacos-section-content">
             
             <!-- Sauce info -->
             <div class="sauce-info">
@@ -161,7 +170,7 @@
                             Ta Viande 2€ 
                             <i class="fas fa-chevron-down toggle-icon" id="viande-icon"></i>
                         </h4>
-                        <div class="ingredients-grid category-content" id="viande-content">
+                        <div class="ingredients-grid category-content collapsed" id="viande-content">
                             <div class="ingredient-item">
                                 <div class="ingredient-image escalope" data-description="Escalope"></div>
                             </div>
@@ -202,7 +211,7 @@
                             Ta Sauce 
                             <i class="fas fa-chevron-down toggle-icon" id="sauce-icon"></i>
                         </h4>
-                        <div class="ingredients-grid sauces-grid category-content" id="sauce-content">
+                        <div class="ingredients-grid sauces-grid category-content collapsed" id="sauce-content">
                             <div class="ingredient-item sauce-item">
                                 <div class="ingredient-image sauce-rectangle harissa-sauce" data-description="Harissa"></div>
                             </div>
@@ -243,7 +252,7 @@
                             Ta Crudité 
                             <i class="fas fa-chevron-down toggle-icon" id="crudite-icon"></i>
                         </h4>
-                        <div class="ingredients-grid category-content" id="crudite-content">
+                        <div class="ingredients-grid category-content collapsed" id="crudite-content">
                             <div class="ingredient">Salade</div>
                             <div class="ingredient">Tomates</div>
                             <div class="ingredient">Oignons</div>
@@ -257,7 +266,7 @@
                             Ton Fromage 1€ 
                             <i class="fas fa-chevron-down toggle-icon" id="fromage-icon"></i>
                         </h4>
-                        <div class="ingredients-grid category-content" id="fromage-content">
+                        <div class="ingredients-grid category-content collapsed" id="fromage-content">
                             <div class="ingredient-item">
                                 <div class="ingredient-image mozza" data-description="Mozzarella"></div>
                             </div>
@@ -296,7 +305,7 @@
                     Option Gratiné 
                     <i class="fas fa-chevron-down toggle-icon" id="gratine-icon"></i>
                 </h3>
-                <div class="gratine-content category-content" id="gratine-content">
+                <div class="gratine-content category-content collapsed" id="gratine-content">
                     <div class="gratine-subtitle">Tacos & Roulé</div>
                 
                 <div class="gratine-prices">
@@ -346,13 +355,624 @@
         </div>
     </section>
 
+    <!-- Nos Sandwichs Section -->
+    <section class="special-section" id="sandwichs">
+        <div class="container">
+            <div class="title-with-image">
+                <h2 class="section-title-dark category-header" onclick="toggleCategory('sandwichs-section')">
+                    Nos Sandwichs
+                    <i class="fas fa-chevron-down toggle-icon" id="sandwichs-section-icon"></i>
+                </h2>
+                <div class="image-with-price">
+                    <img src="images double b/supp_menu.png" alt="Supplément menu" class="title-supplement-image">
+                    <span class="supplement-price">+3€</span>
+                </div>
+            </div>
+            
+            <div class="sandwichs-section-content category-content collapsed" id="sandwichs-section-content">
+            
+            <!-- Menu principal des sandwichs -->
+            <div class="sandwichs-grid menu-grid">
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-americain"></div>
+                    <div class="menu-item-content">
+                        <h3>L'Américain</h3>
+                        <p>Steak haché, crudités, cheddar</p>
+                        <span class="price">5.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-chill"></div>
+                    <div class="menu-item-content">
+                        <h3>Le Chill</h3>
+                        <p>Cordon bleu, Vache qui Rit, crudités</p>
+                        <span class="price">6.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-cremeux"></div>
+                    <div class="menu-item-content">
+                        <h3>Le Crémeux</h3>
+                        <p>Escalope White, crudités, cheddar</p>
+                        <span class="price">5.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-effiloche"></div>
+                    <div class="menu-item-content">
+                        <h3>L'Effiloché</h3>
+                        <p>Boeuf effilochée, crudités, cheddar</p>
+                        <p><i class="fas fa-exclamation-triangle">&nbsp;</i>UNIQUEMENT LE WEEK-END</p>
+                        <span class="price">8.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-frites-omelette"></div>
+                    <div class="menu-item-content">
+                        <h3>Frites Omelette</h3>
+                        <p>Frites, oeuf, emmental</p>
+                        <span class="price">4.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-kebab"></div>
+                    <div class="menu-item-content">
+                        <h3>Le Kebab</h3>
+                        <p>Viande de kebab, crudités</p>
+                        <span class="price">5.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-kefta"></div>
+                    <div class="menu-item-content">
+                        <h3>Le Kefta</h3>
+                        <p>Kefta grillé, cheddar, crudités</p>
+                        <span class="price">6.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-oriental"></div>
+                    <div class="menu-item-content">
+                        <h3>L'Oriental</h3>
+                        <p>Poulet mariné, olives, poivrons, cheddar</p>
+                        <span class="price">6.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image sandwich-paki"></div>
+                    <div class="menu-item-content">
+                        <h3>Le Paki</h3>
+                        <p>Escalope tandoori, crudités, cheddar</p>
+                        <span class="price">5.90€</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Burgers Section -->
+    <section class="special-section" id="burgers">
+        <div class="container">
+            <div class="title-with-image">
+                <h2 class="section-title-dark category-header" onclick="toggleCategory('burgers-section')">
+                    Nos Burgers
+                    <i class="fas fa-chevron-down toggle-icon" id="burgers-section-icon"></i>
+                </h2>
+                <div class="image-with-price">
+                    <img src="images double b/supp_menu.png" alt="Supplément menu" class="title-supplement-image">
+                    <span class="supplement-price">+3€</span>
+                </div>
+            </div>
+            
+            <div class="burgers-section-content category-content collapsed" id="burgers-section-content">
+            
+            <!-- Les Classiques -->
+            <div class="burgers-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('burgers-classiques-content')">
+                    <i class="fas fa-star"></i>
+                    Nos Burgers Classiques
+                    <i class="fas fa-chevron-down toggle-icon" id="burgers-classiques-icon"></i>
+                </div>
+                
+                <div class="burgers-grid menu-grid subcategory-content collapsed" id="burgers-classiques-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-cheese"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Cheese</h3>
+                            <p>Steak, cheddar, sauce</p>
+                            <span class="price">3.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-chicken"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Chicken</h3>
+                            <p>Poulet, crudités, cheddar, sauce</p>
+                            <span class="price">4.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-fish"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Fish</h3>
+                            <p>Poisson pané, cheddar, sauce fish</p>
+                            <span class="price">4.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-maxi"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Maxi</h3>
+                            <p>Maxi steak, cheddar, crudités</p>
+                            <span class="price">4.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-double-max"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Double Max</h3>
+                            <p>Double steak, double cheddar, crudités</p>
+                            <span class="price">6.00€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-baps"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Baps</h3>
+                            <p>Steak, galette de pomme de terre, cheddar</p>
+                            <span class="price">6.00€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Les Sensationnels -->
+            <div class="burgers-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('burgers-sensationnels-content')">
+                    <i class="fas fa-fire"></i>
+                    Les Sensationnels
+                    <i class="fas fa-chevron-down toggle-icon" id="burgers-sensationnels-icon"></i>
+                </div>
+                
+                <div class="burgers-grid menu-grid subcategory-content collapsed" id="burgers-sensationnels-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-crazy-cheese"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Crazy Cheese</h3>
+                            <p>Pain brioché gratiné emmental, steak, salade, tomates, oignons crispy</p>
+                            <p>1 fromage au choix: Vache qui rit, Cheddar, Boursin, Raclette, Chèvre, Bleu</p>
+                            <span class="price">6.90€</span>
+                        </div>
+                    </div>
+<div class="menu-item dark">
+                        <div class="menu-item-image burger-texan"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Texan</h3>
+                            <p>Pain brioché, boeuf effiloché, bacon, salade, tomates, oignons, cornichons</p>
+                            <p><i class="fas fa-exclamation-triangle">&nbsp;</i>UNIQUEMENT LE WEEK-END</p>
+                            <span class="price">7.90€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-smash"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Smash Double B</h3>
+                            <p>Pain brioché, 2 steaks smashés, cheddar, salade, tomates, oignons crispy, cornichons</p>
+                            <span class="price">6.90€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Les Incontournables -->
+            <div class="burgers-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('burgers-incontournables-content')">
+                    <i class="fas fa-crown"></i>
+                    Les Incontournables
+                    <i class="fas fa-chevron-down toggle-icon" id="burgers-incontournables-icon"></i>
+                </div>
+                
+                <div class="burgers-grid menu-grid subcategory-content collapsed" id="burgers-incontournables-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-boursin"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Boursin</h3>
+                            <p>Steak, boursin, cheddar, crudités</p>
+                            <span class="price">4.90€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-smash-simple"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Smash</h3>
+                            <p>Steak smashé, cheddar, cornichons</p>
+                            <span class="price">4.90€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image burger-vqr"></div>
+                        <div class="menu-item-content">
+                            <h3>La Vache Qui Rit</h3>
+                            <p>Steak, Vache Qui Rit, cheddar, crudités</p>
+                            <span class="price">4.90€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Bowls Section -->
+    <section class="special-section" id="bowls">
+        <div class="container">
+            <div class="title-with-image">
+                <h2 class="section-title-dark category-header" onclick="toggleCategory('bowls-section')">
+                    Nos Bowls
+                    <i class="fas fa-chevron-down toggle-icon" id="bowls-section-icon"></i>
+                </h2>
+            </div>
+            
+            <div class="bowls-section-content category-content collapsed" id="bowls-section-content">
+            
+            <!-- Menu principal des bowls -->
+            <div class="bowls-grid menu-grid">
+                <div class="menu-item dark">
+                    <div class="menu-item-image bowl-crunchy"></div>
+                    <div class="menu-item-content">
+                        <h3>La Crunchy</h3>
+                        <p>Tenders, oignons crispy, cheddar, frites, sauce gruyère</p>
+                        <p>+ 2 sauces au choix, gratiné mozzarella</p>
+                        <span class="price">7.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image bowl-frenchy"></div>
+                    <div class="menu-item-content">
+                        <h3>La Frenchy</h3>
+                        <p>Cordon bleu, lardons, Vache Qui Rit, frites, sauce gruyère</p>
+                        <p>+ 2 sauces au choix, gratiné mozzarella</p>
+                        <span class="price">7.90€</span>
+                    </div>
+                </div>
+                <div class="menu-item dark">
+                    <div class="menu-item-image bowl-hot-spicy"></div>
+                    <div class="menu-item-content">
+                        <h3>La Hot-Spicy</h3>
+                        <p>Escalope tex-mex, piments, chorizo, oignons rouges, frites, sauce gruyère</p>
+                        <p>+ 2 sauces au choix, gratiné mozzarella</p>
+                        <span class="price">7.90€</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Pizzas Section -->
+    <section class="special-section" id="pizzas">
+        <div class="container">
+            <div class="title-with-image">
+                <h2 class="section-title-dark category-header" onclick="toggleCategory('pizzas-section')">
+                    Nos Pizzas
+                    <i class="fas fa-chevron-down toggle-icon" id="pizzas-section-icon"></i>
+                </h2>
+            </div>
+            
+            <div class="pizzas-section-content category-content collapsed" id="pizzas-section-content">
+            
+            <!-- Les bases tomate -->
+            <div class="pizzas-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('pizzas-tomate-content')">
+                    <i class="fas fa-pizza-slice"></i>
+                    Les bases Tomate
+                    <i class="fas fa-chevron-down toggle-icon" id="pizzas-tomate-icon"></i>
+                </div>
+                
+                <div class="pizzas-grid menu-grid subcategory-content collapsed" id="pizzas-tomate-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-margherita"></div>
+                        <div class="menu-item-content">
+                            <h3>Margarita</h3>
+                            <p>Tomate, mozzarella, olives</p>
+                            <span class="price">6.00€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-reine"></div>
+                        <div class="menu-item-content">
+                            <h3>La Reine</h3>
+                            <p>Mozzarella, jambon, champignons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-4f"></div>
+                        <div class="menu-item-content">
+                            <h3>La 4 Fromages</h3>
+                            <p>Mozzarella, chèvre, bleu, emmental</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-vegetarienne"></div>
+                        <div class="menu-item-content">
+                            <h3>La Végétarienne</h3>
+                            <p>Mozzarella, champignons, poivrons, olives, oignons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-norvegienne"></div>
+                        <div class="menu-item-content">
+                            <h3>La Norvégienne</h3>
+                            <p>Mozzarella, saumon, pomme de terre</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-thon"></div>
+                        <div class="menu-item-content">
+                            <h3>La Thon</h3>
+                            <p>Mozzarella, thon, champignons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-orientale"></div>
+                        <div class="menu-item-content">
+                            <h3>L'Orientale</h3>
+                            <p>Mozzarella, merguez, poivrons, olives</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-bolo"></div>
+                        <div class="menu-item-content">
+                            <h3>La Bolognaise</h3>
+                            <p>Mozzarella, viande hachée, poivrons, oignons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Les bases Crème -->
+            <div class="pizzas-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('pizzas-creme-content')">
+                    <i class="fas fa-star"></i>
+                    Les bases Crème
+                    <i class="fas fa-chevron-down toggle-icon" id="pizzas-creme-icon"></i>
+                </div>
+                
+                <div class="pizzas-grid menu-grid subcategory-content collapsed" id="pizzas-creme-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-fromagere"></div>
+                        <div class="menu-item-content">
+                            <h3>La Fromagère</h3>
+                            <p>Mozzarella, emmental, chèvre, bleu</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                     <div class="menu-item dark">
+                        <div class="menu-item-image pizza-boisee"></div>
+                        <div class="menu-item-content">
+                            <h3>La Boisée</h3>
+                            <p>Mozzarella, escalope, pomme de terre, sauce gruyère</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-savoyarde"></div>
+                        <div class="menu-item-content">
+                            <h3>La Savoyarde</h3>
+                            <p>Mozzarella, pommes de terre, raclette, lardons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-mielleuse"></div>
+                        <div class="menu-item-content">
+                            <h3>La Mielleuse</h3>
+                            <p>Mozzarella, chèvre, miel</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                                        <div class="menu-item dark">
+                        <div class="menu-item-image pizza-galata"></div>
+                        <div class="menu-item-content">
+                            <h3>La Galata</h3>
+                            <p>Mozzarella, kebab, oignons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                                        <div class="menu-item dark">
+                        <div class="menu-item-image pizza-boursin"></div>
+                        <div class="menu-item-content">
+                            <h3>La Boursin</h3>
+                            <p>Mozzarella, jambon, boursin</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-carbonara"></div>
+                        <div class="menu-item-content">
+                            <h3>La Carbonara</h3>
+                            <p>Mozzarella, lardons, champignons</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-paysanne"></div>
+                        <div class="menu-item-content">
+                            <h3>La Paysanne</h3>
+                            <p>Mozzarella, jambon, pommes de terre</p>
+                            <span class="price">7.50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Les Signatures -->
+            <div class="pizzas-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('pizzas-signatures-content')">
+                    <i class="fas fa-heart"></i>
+                    Les Signatures
+                    <i class="fas fa-chevron-down toggle-icon" id="pizzas-signatures-icon"></i>
+                </div>
+                
+                <div class="pizzas-grid menu-grid subcategory-content collapsed" id="pizzas-signatures-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-india"></div>
+                        <div class="menu-item-content">
+                            <h3>L'India</h3>
+                            <p>Sauce curry, fromage, poulet, tomate fraîche</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+ <div class="menu-item dark">
+                        <div class="menu-item-image pizza-buffalo"></div>
+                        <div class="menu-item-content">
+                            <h3>La Buffalo</h3>
+                            <p>Sauce barbecue, fromage, steak, oignons</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+                     <div class="menu-item dark">
+                        <div class="menu-item-image pizza-algerienne"></div>
+                        <div class="menu-item-content">
+                            <h3>L'Algérienne</h3>
+                            <p>Sauce algérienne, fromage, poivrons, poulet, merguez</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+<div class="menu-item dark">
+                        <div class="menu-item-image pizza-marocaine"></div>
+                        <div class="menu-item-content">
+                            <h3>La Marocaine</h3>
+                            <p>Crème fraîche, poulet mariné, champignons, olives</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-hot-paki"></div>
+                        <div class="menu-item-content">
+                            <h3>La Hot Paki</h3>
+                            <p>Mozzarella, escalope tandoori, Vache Qui Rit, poivrons, piment</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+                   
+<div class="menu-item dark">
+                        <div class="menu-item-image pizza-cannibale"></div>
+                        <div class="menu-item-content">
+                            <h3>La Cannibale</h3>
+                            <p>Sauce tomate, mozzarella, viande hachée, escalope, merguez</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item dark">
+                        <div class="menu-item-image pizza-mexicaine"></div>
+                        <div class="menu-item-content">
+                            <h3>La Mexicaine</h3>
+                            <p>Mozzarella, poulet tex-mex, poivrons, crème de cheddar</p>
+                            <span class="price">8.50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cartes de suppléments pour pizzas -->
+            <div class="pizza-supplements">
+                <div class="supplement-card">
+                    <h4>Supplément Viande</h4>
+                    <div class="price-badge">+2.00€</div>
+                </div>
+                <div class="supplement-card">
+                    <h4>Autre Supplément</h4>
+                    <div class="price-badge">+1.00€</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nos Assiettes & Salades Section -->
+    <section class="special-section" id="assiettes-salades">
+        <div class="container">
+            <div class="title-with-image">
+                <h2 class="section-title-dark category-header" onclick="toggleCategory('assiettes-section')">
+                    Nos Assiettes & Salades
+                    <i class="fas fa-chevron-down toggle-icon" id="assiettes-section-icon"></i>
+                </h2>
+            </div>
+            
+            <div class="assiettes-section-content category-content collapsed" id="assiettes-section-content">
+            
+            <!-- Les Assiettes -->
+            <div class="assiettes-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('assiettes-content')">
+                    <i class="fas fa-utensils"></i>
+                    Les Assiettes
+                    <i class="fas fa-chevron-down toggle-icon" id="assiettes-icon"></i>
+                </div>
+                
+                <div class="assiettes-grid menu-grid subcategory-content collapsed" id="assiettes-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image assiette-simple"></div>
+                        <div class="menu-item-content">
+                            <h3>Assiette Simple</h3>
+                            <p>1 viande au choix, frites, crudités</p>
+                            <p><i class="fas fa-exclamation-triangle">&nbsp;</i>PROCHAINEMENT</p>
+                            <span class="price">9.00€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Les Salades -->
+            <div class="assiettes-subcategory">
+                <div class="menu-badge-center subcategory-header" onclick="toggleSubcategory('salades-content')">
+                    <i class="fas fa-leaf"></i>
+                    Les Salades
+                    <i class="fas fa-chevron-down toggle-icon" id="salades-icon"></i>
+                </div>
+                
+                <div class="salades-grid menu-grid subcategory-content collapsed" id="salades-content">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image salade-cesar"></div>
+                        <div class="menu-item-content">
+                            <h3>La César</h3>
+                            <p>Salade, tomates, poulet, maïs</p>
+                            <p><i class="fas fa-exclamation-triangle">&nbsp;</i>PROCHAINEMENT</p>
+                            <span class="price">7.00€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image salade-nicoise"></div>
+                        <div class="menu-item-content">
+                            <h3>La Niçoise</h3>
+                            <p>Salade, tomates, thon, maïs</p>
+                            <p><i class="fas fa-exclamation-triangle">&nbsp;</i>PROCHAINEMENT</p>
+                            <span class="price">12.50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Floating Buttons -->
     <div class="floating-buttons">
         <button class="floating-btn call-btn" onclick="makeCall()">
             <i class="fas fa-phone"></i>
             <span>Appeler</span>
         </button>
-        <a href="menu_double_b.pdf" class="floating-btn menu-btn">
+        <a href="menu_double_b.pdf" target="_blank" rel="noopener noreferrer" class="floating-btn menu-btn">
             <i class="fas fa-bars"></i>
             <span>Menu</span>
         </a>
@@ -375,7 +995,8 @@
                         <i class="fas fa-clock"></i>
                         <div>
                             <h3>Horaires</h3>
-                            <p>Ouvert 7j/7<br>18h30 à 00h30</p>
+                            <p>Ouvert 7j/7<br>11h30 à 14h & 18h30 à 00h30</p>
+                            <p>Fermé les vendredis et dimanches midi</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -400,7 +1021,7 @@
         <div class="container">
             <h2 class="section-title">COMMANDEZ EN LIGNE</h2>
             <div class="commander-grid">
-                <a href="https://www.ubereats.com/fr/store/double-b/aAnMq9u5Qpa9vyC7_SXgrA?srsltid=AfmBOoqBS1BW4rqV2N1olU6wIK58GtCdDPz-FmKjwOoMdAE1XE0LHf13" class="commander-card uber">
+                <a href="https://www.ubereats.com/fr/store/double-b/aAnMq9u5Qpa9vyC7_SXgrA?srsltid=AfmBOoqBS1BW4rqV2N1olU6wIK58GtCdDPz-FmKjwOoMdAE1XE0LHf13" target="_blank" rel="noopener noreferrer" class="commander-card uber">
                     <div class="commander-icon">
                         <i class="fas fa-car"></i>
                     </div>
@@ -409,7 +1030,7 @@
                         <p>Livraison rapide</p>
                     </div>
                 </a>
-                <a href="https://deliveroo.fr/fr/menu/saint-etienne/ste-cret-dr-roc/double-b-1-rue-tiblier-verne" class="commander-card deliveroo">
+                <a href="https://deliveroo.fr/fr/menu/saint-etienne/ste-cret-dr-roc/double-b-1-rue-tiblier-verne" target="_blank" rel="noopener noreferrer" class="commander-card deliveroo">
                     <div class="commander-icon">
                         <i class="fas fa-motorcycle"></i>
                     </div>
@@ -418,7 +1039,7 @@
                         <p>Livraison à domicile</p>
                     </div>
                 </a>
-                <a href="tel:0983924771" class="commander-card phone">
+                <a href="tel:0983924771" target="_blank" rel="noopener noreferrer" class="commander-card phone">
                     <div class="commander-icon">
                         <i class="fas fa-phone"></i>
                     </div>

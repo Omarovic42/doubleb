@@ -23,65 +23,36 @@ document.addEventListener('DOMContentLoaded', function() {
     initLazyLoading();
 });
 
-// Navigation
+// Navigation - désactivée pour éviter les conflits avec le nouveau gestionnaire hamburger
 function initNavigation() {
-    // Vérifier que les éléments existent
-    if (hamburger && navMobile) {
-        hamburger.addEventListener('click', toggleMobileMenu);
-        
-        // Close mobile menu when clicking on a link and handle smooth scrolling
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                
-                // Fermer le menu mobile
-                closeMobileMenu();
-                
-                // Navigation fluide vers la section
-                if (targetId && targetId.startsWith('#')) {
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        const headerHeight = document.querySelector('.header').offsetHeight;
-                        const sectionTop = targetSection.offsetTop - headerHeight;
-                        
-                        window.scrollTo({
-                            top: sectionTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMobile.contains(e.target) && !hamburger.contains(e.target)) {
-                closeMobileMenu();
-            }
-        });
-    } else {
-        console.error('Elements hamburger ou navMobile non trouvés');
-    }
+    // Navigation gérée par le nouveau système hamburger
+    console.log('Navigation déléguée au nouveau système hamburger');
 }
 
 function toggleMobileMenu() {
-    hamburger.classList.toggle('active');
-    navMobile.classList.toggle('active');
+    // Fonction désactivée - gérée par le nouveau système
 }
 
 function closeMobileMenu() {
-    hamburger.classList.remove('active');
-    navMobile.classList.remove('active');
+    // Fonction désactivée - gérée par le nouveau système
 }
 
 // Carousel functionality
 function initCarousel() {
+    // Defensive carousel initialization: only run if carousel + slides exist
+    const carousel = document.querySelector('.carousel');
+    if (!carousel) return; // no carousel on the page
+
+    // Ensure slides/indicators exist
+    slides = document.querySelectorAll('.slide') || [];
+    indicators = document.querySelectorAll('.indicator') || [];
+
+    if (!slides.length || !indicators.length) return;
+
     showSlide(currentSlideIndex);
     startAutoSlide();
-    
-    // Pause on hover
-    const carousel = document.querySelector('.carousel');
+
+    // Pause on hover (safe-guard)
     carousel.addEventListener('mouseenter', stopAutoSlide);
     carousel.addEventListener('mouseleave', startAutoSlide);
 }
@@ -335,7 +306,7 @@ function toggleCategory(categoryId) {
 
 // Restaurer l'état des catégories au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
-    const categories = ['viande', 'sauce', 'crudite', 'fromage', 'gratine', 'tacos-section'];
+    const categories = ['viande', 'sauce', 'crudite', 'fromage', 'gratine', 'tacos-section', 'sandwichs-section', 'burgers-section', 'bowls-section', 'pizzas-section', 'assiettes-section'];
     
     categories.forEach(categoryId => {
         const savedState = localStorage.getItem('category-' + categoryId);
@@ -361,28 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Fonction de sauvegarde pour le menu hamburger
-window.addEventListener('load', function() {
-    const hamburgerBackup = document.getElementById('hamburger');
-    const navMobileBackup = document.getElementById('nav-mobile');
-    
-    if (hamburgerBackup && navMobileBackup) {
-        hamburgerBackup.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Hamburger clicked!');
-            
-            // Toggle des classes
-            hamburgerBackup.classList.toggle('active');
-            navMobileBackup.classList.toggle('active');
-            
-            console.log('Hamburger active:', hamburgerBackup.classList.contains('active'));
-            console.log('NavMobile active:', navMobileBackup.classList.contains('active'));
-        });
-        
-        console.log('Backup hamburger menu initialized successfully');
-    } else {
-        console.error('Backup: Hamburger ou NavMobile non trouvés');
-    }
-});
+// Backup handler removed - replaced by a single, robust initializer (to avoid duplicate listeners/conflicts)
 
 // Debug : Vérifier les éléments après chargement complet
 window.addEventListener('load', function() {
@@ -393,91 +343,124 @@ window.addEventListener('load', function() {
     console.log('NavMobile classes:', document.getElementById('nav-mobile')?.className);
 });
 
-// Gestionnaire simplifié et indépendant du menu hamburger
+// Menu hamburger - Version corrigée et simplifiée
 (function() {
     'use strict';
     
-    function initSimpleHamburgerMenu() {
+    let isInitialized = false;
+    
+    function initHamburgerMenu() {
+        if (isInitialized) return;
+        
         const hamburger = document.querySelector('#hamburger');
         const navMobile = document.querySelector('#nav-mobile');
         
         if (!hamburger || !navMobile) {
-            console.error('Éléments du menu hamburger non trouvés');
+            setTimeout(initHamburgerMenu, 100);
             return;
         }
         
-        // Fonction pour ouvrir/fermer le menu
-        function toggleMenu() {
-            const isActive = hamburger.classList.contains('active');
+        // Supprimer tous les event listeners existants
+        const newHamburger = hamburger.cloneNode(true);
+        hamburger.parentNode.replaceChild(newHamburger, hamburger);
+        
+        // Fonction toggle propre
+        function toggleMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
             
-            if (isActive) {
-                hamburger.classList.remove('active');
-                navMobile.classList.remove('active');
-                console.log('Menu fermé');
-            } else {
-                hamburger.classList.add('active');
-                navMobile.classList.add('active');
-                console.log('Menu ouvert');
+            console.log('Toggle menu called'); // Debug
+            newHamburger.classList.toggle('active');
+            navMobile.classList.toggle('active');
+            
+            // Forcer le repaint sur mobile
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    navMobile.style.transform = navMobile.classList.contains('active') 
+                        ? 'translateX(0)' : 'translateX(-100%)';
+                }, 10);
             }
         }
         
-        // Fonction pour fermer le menu
+        // Fonction fermeture propre
         function closeMenu() {
-            hamburger.classList.remove('active');
+            newHamburger.classList.remove('active');
             navMobile.classList.remove('active');
-            console.log('Menu fermé (fonction close)');
         }
         
-        // Event listener pour le clic sur hamburger
-        hamburger.addEventListener('click', function(e) {
+        // Event listeners pour le hamburger (click et touch)
+        newHamburger.addEventListener('click', toggleMenu);
+        newHamburger.addEventListener('touchstart', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            toggleMenu();
-        });
+            toggleMenu(e);
+        }, { passive: false });
         
-        // Event listener pour fermer en cliquant à l'extérieur
+        // Fermer en cliquant à l'extérieur
         document.addEventListener('click', function(e) {
-            if (!navMobile.contains(e.target) && !hamburger.contains(e.target)) {
-                if (hamburger.classList.contains('active')) {
-                    closeMenu();
-                }
+            if (!navMobile.contains(e.target) && !newHamburger.contains(e.target)) {
+                closeMenu();
             }
         });
         
-        // Event listeners pour les liens de navigation
+        // Navigation liens
         const navLinks = navMobile.querySelectorAll('.nav__link');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const href = this.getAttribute('href');
-                
-                // Fermer le menu
                 closeMenu();
                 
-                // Navigation fluide
-                if (href && href.startsWith('#')) {
+                if (href?.startsWith('#')) {
                     const target = document.querySelector(href);
                     if (target) {
-                        const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+                        const headerHeight = 80;
                         const targetPosition = target.offsetTop - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                     }
                 }
             });
         });
         
-        console.log('Menu hamburger simplifié initialisé avec succès');
+        isInitialized = true;
+        console.log('Menu hamburger correctement initialisé');
     }
     
-    // Initialiser quand le DOM est prêt
+    // Initialiser dès que possible
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSimpleHamburgerMenu);
+        document.addEventListener('DOMContentLoaded', initHamburgerMenu);
     } else {
-        initSimpleHamburgerMenu();
+        initHamburgerMenu();
     }
+    
+    // Fallback pour mobile - forcer l'initialisation après un délai
+    setTimeout(() => {
+        if (!isInitialized) {
+            console.log('Fallback: Force initialisation du menu hamburger');
+            initHamburgerMenu();
+        }
+    }, 1000);
     
 })();
+
+// Fonction pour toggle des sous-catégories
+function toggleSubcategory(contentId) {
+    const content = document.getElementById(contentId);
+    const iconId = contentId.replace('-content', '-icon');
+    const icon = document.getElementById(iconId);
+    
+    if (!content || !icon) return;
+    
+    const isCollapsed = content.classList.contains('collapsed');
+    
+    if (isCollapsed) {
+        // Ouvrir la sous-catégorie
+        content.classList.remove('collapsed');
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        // Fermer la sous-catégorie
+        content.classList.add('collapsed');
+        icon.style.transform = 'rotate(0deg)';
+    }
+}

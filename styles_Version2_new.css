@@ -11,17 +11,41 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    color-scheme: light; /* Force le mode clair */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #333 !important;
     overflow-x: hidden;
-    background: #fff;
+    background: #fff !important;
     min-height: 100vh;
     margin: 0 !important;
     padding: 0 !important;
+    color-scheme: light !important; /* Force le mode clair */
+}
+
+/* Force les couleurs même en mode sombre */
+@media (prefers-color-scheme: dark) {
+    * {
+        color-scheme: light !important;
+    }
+    
+    body, html {
+        background: #fff !important;
+        color: #333 !important;
+    }
+    
+    .nav, .header {
+        background: #000 !important;
+        color: #fff !important;
+    }
+    
+    .special-section {
+        background: linear-gradient(135deg, #921a1c, #d2001f) !important;
+        color: #fff !important;
+    }
 }
 
 .container {
@@ -120,7 +144,7 @@ section,
 }
 
 .logo-link {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     transition: all 0.3s ease;
 }
@@ -128,6 +152,13 @@ section,
 .logo-link:hover {
     opacity: 0.8;
     transform: translateY(-1px);
+    text-decoration: none !important;
+}
+
+.logo-link:focus,
+.logo-link:active,
+.logo-link:visited {
+    text-decoration: none !important;
 }
 
 .logo-link h1 {
@@ -139,6 +170,12 @@ section,
     text-transform: uppercase;
     display: flex;
     align-items: center;
+}
+
+/* Forcer suppression de toute décoration (soulignement) sur le lien du logo */
+.logo-link,
+.logo-link * {
+    text-decoration: none !important;
 }
 
 .nav-logo-img {
@@ -164,11 +201,17 @@ section,
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 12px; /* Plus grande zone tactile */
     display: flex;
     flex-direction: column;
     gap: 3px;
     z-index: 1001;
+    min-width: 44px; /* Taille tactile minimum */
+    min-height: 44px; /* Taille tactile minimum */
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+    touch-action: manipulation;
 }
 
 .hamburger span {
@@ -199,14 +242,16 @@ section,
     height: 100vh;
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
     backdrop-filter: blur(10px);
-    transition: left 0.3s ease;
+    transition: left 0.3s ease, transform 0.3s ease;
     padding-top: 100px;
     z-index: 999;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+    transform: translateX(-100%);
 }
 
 .nav__mobile.active {
     left: 0;
+    transform: translateX(0);
 }
 
 .nav__list {
@@ -360,6 +405,7 @@ section,
 
 .commander-btn i {
     font-size: 1.3rem;
+    color: var(--primary-red);
 }
 
 .hero-food-images {
@@ -602,8 +648,10 @@ section#tacos.menu-section .section-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     position: relative;
+    min-height: 60px;
+    padding: 0 10px;
 }
 
 .title-with-image .section-title-dark {
@@ -611,19 +659,26 @@ section#tacos.menu-section .section-title {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
+    max-width: calc(100% - 280px);
+    text-align: center;
+    z-index: 1;
 }
 
 .image-with-price {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin-left: auto;
+    flex-shrink: 0;
+    z-index: 2;
+    position: relative;
 }
 
 .title-supplement-image {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 .supplement-price {
@@ -637,6 +692,53 @@ section#tacos.menu-section .section-title {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Cartes de suppléments pour pizzas */
+.pizza-supplements {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.supplement-card {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    max-width: 250px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.supplement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-red);
+}
+
+.supplement-card h4 {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.supplement-card .price-badge {
+    background: var(--primary-red);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 10px;
+}
+
 .subtitle {
     display: block;
     font-size: 2.5rem;
@@ -648,16 +750,54 @@ section#tacos.menu-section .section-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     background: var(--accent-gold);
     color: var(--primary-red);
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-weight: 800;
-    font-size: 1.2rem;
-    margin: 0 auto 40px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 40px auto 30px;
     width: fit-content;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Subcategory headers cliquables */
+.subcategory-header {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(146, 26, 28, 0.3);
+    touch-action: manipulation;
+}
+
+.subcategory-header:hover, .subcategory-header:focus {
+    transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.subcategory-header:active {
+    transform: translateY(0);
+}
+
+/* Contenu des sous-catégories */
+.subcategory-content {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+
+.subcategory-content.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Animation des icônes de toggle pour sous-catégories */
+.subcategory-header .toggle-icon {
+    transition: transform 0.3s ease;
 }
 
 /* Menu Grid */
@@ -696,6 +836,32 @@ section#tacos.menu-section .section-title {
 
 .sandwichs-grid {
     grid-template-columns: repeat(3, 1fr);
+}
+
+.bowls-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.pizzas-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.assiettes-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.salades-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Grille spécifique pour les sandwichs avec 9 éléments */
+.sandwichs-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    display: grid !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
 }
 
 .assiettes-grid {
@@ -833,15 +999,191 @@ section#tacos.menu-section .section-title {
 .le-forestier { background: linear-gradient(45deg, #27ae60, #2ecc71); }
 .le-cheesy { background: linear-gradient(45deg, #f39c12, #e67e22); }
 
-/* Images des signatures dans la section tacos */
-.signature-savoyard { 
-    background: #921a1c url('images double b/signatures/le_savoyard.png') center/200% no-repeat;
+/* Images des signatures dans la section tacos - harmonisées avec les tuiles tacos */
+.signature-savoyard,
+.signature-forestier,
+.signature-cheesy {
+    background-color: #921a1c;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 200% !important; /* same visual zoom as tacos */
 }
-.signature-forestier { 
-    background: #921a1c url('images double b/signatures/le_forestier.png') center/200% no-repeat;
+.signature-savoyard { background-image: url('images double b/signatures/le_savoyard.png'); }
+.signature-forestier { background-image: url('images double b/signatures/le_forestier.png'); }
+.signature-cheesy { background-image: url('images double b/signatures/le_cheesy.png'); }
+
+/* Ensure signature images use the same container sizing as other menu images */
+.signatures-grid .menu-item-image {
+    height: 200px; /* same as .menu-item-image default */
+    background-size: 200% !important;
+    background-position: center center !important;
 }
-.signature-cheesy { 
-    background: #921a1c url('images double b/signatures/le_cheesy.png') center/200% no-repeat;
+
+/* Images des sandwichs */
+.sandwich-americain { 
+    background: #921a1c url('images double b/sandwichs/americain.png') center/200% no-repeat;
+}
+.sandwich-chill { 
+    background: #921a1c url('images double b/sandwichs/chill.png') center/200% no-repeat;
+}
+.sandwich-cremeux { 
+    background: #921a1c url('images double b/sandwichs/cremeux.png') center/200% no-repeat;
+}
+.sandwich-effiloche { 
+    background: #921a1c url('images double b/sandwichs/effiloche.png') center/200% no-repeat;
+}
+.sandwich-frites-omelette { 
+    background: #921a1c url('images double b/sandwichs/frites_omelette.png') center/200% no-repeat;
+}
+.sandwich-kebab { 
+    background: #921a1c url('images double b/sandwichs/kebab.png') center/200% no-repeat;
+}
+.sandwich-kefta { 
+    background: #921a1c url('images double b/sandwichs/le_kefta.png') center/200% no-repeat;
+}
+.sandwich-oriental { 
+    background: #921a1c url('images double b/sandwichs/oriental.png') center/200% no-repeat;
+}
+.sandwich-paki { 
+    background: #921a1c url('images double b/sandwichs/paki.png') center/200% no-repeat;
+}
+
+/* Images des burgers */
+.burger-cheese { 
+    background: #921a1c url('images double b/burgers/cheese.png') center/200% no-repeat;
+}
+.burger-chicken { 
+    background: #921a1c url('images double b/burgers/chicken.png') center/200% no-repeat;
+}
+.burger-fish { 
+    background: #921a1c url('images double b/burgers/fish.png') center/200% no-repeat;
+}
+.burger-maxi { 
+    background: #921a1c url('images double b/burgers/maxi.png') center/200% no-repeat;
+}
+.burger-texan { 
+    background: #921a1c url('images double b/burgers/texan.png') center/200% no-repeat;
+}
+.burger-baps { 
+    background: #921a1c url('images double b/burgers/baps.png') center/200% no-repeat;
+}
+.burger-crazy-cheese { 
+    background: #921a1c url('images double b/burgers/crazy_cheese.png') center/200% no-repeat;
+}
+.burger-double-max { 
+    background: #921a1c url('images double b/burgers/double_max.png') center/200% no-repeat;
+}
+.burger-smash { 
+    background: #921a1c url('images double b/burgers/smash_double_b.png') center/200% no-repeat;
+}
+.burger-boursin { 
+    background: #921a1c url('images double b/burgers/le_boursin.png') center/200% no-repeat;
+}
+.burger-smash-simple { 
+    background: #921a1c url('images double b/burgers/le_smash.png') center/200% no-repeat;
+}
+.burger-vqr { 
+    background: #921a1c url('images double b/burgers/le_vqr.png') center/200% no-repeat;
+}
+
+/* Images des bowls */
+.bowl-crunchy { 
+    background: #921a1c url('images double b/bowls/crunchy.png') center/200% no-repeat;
+}
+.bowl-frenchy { 
+    background: #921a1c url('images double b/bowls/frenchy.png') center/200% no-repeat;
+}
+.bowl-hot-spicy { 
+    background: #921a1c url('images double b/bowls/hot_spicy.png') center/200% no-repeat;
+}
+
+/* Images des pizzas */
+.pizza-margherita { 
+    background: #921a1c url('images double b/pizzas/margherita.png') center/200% no-repeat;
+}
+.pizza-reine { 
+    background: #921a1c url('images double b/pizzas/reine.png') center/200% no-repeat;
+}
+.pizza-4f { 
+    background: #921a1c url('images double b/pizzas/4f.png') center/200% no-repeat;
+}
+.pizza-vegetarienne { 
+    background: #921a1c url('images double b/pizzas/vegetarienne.png') center/200% no-repeat;
+}
+.pizza-cannibale { 
+    background: #921a1c url('images double b/pizzas/cannibale.png') center/200% no-repeat;
+}
+.pizza-norvegienne { 
+    background: #921a1c url('images double b/pizzas/norvegienne.png') center/200% no-repeat;
+}
+.pizza-thon { 
+    background: #921a1c url('images double b/pizzas/thon.png') center/200% no-repeat;
+}
+.pizza-fromagere { 
+    background: #921a1c url('images double b/pizzas/fromagere.png') center/200% no-repeat;
+}
+.pizza-orientale { 
+    background: #921a1c url('images double b/pizzas/pizza_orientale.png') center/200% no-repeat;
+}
+.pizza-buffalo { 
+    background: #921a1c url('images double b/pizzas/BUFFALO.png') center/200% no-repeat;
+}
+.pizza-india { 
+    background: #921a1c url('images double b/pizzas/india.png') center/200% no-repeat;
+}
+.pizza-hot-paki { 
+    background: #921a1c url('images double b/pizzas/hot_paki.png') center/300% no-repeat;
+}
+.pizza-marocaine { 
+    background: #921a1c url('images double b/pizzas/marocaine.png') center/200% no-repeat;
+}
+.pizza-algerienne { 
+    background: #921a1c url('images double b/pizzas/algerienne.png') center/200% no-repeat;
+}
+.pizza-galata { 
+    background: #921a1c url('images double b/pizzas/galata.png') center/200% no-repeat;
+}
+.pizza-bolo { 
+    background: #921a1c url('images double b/pizzas/bolo.png') center/200% no-repeat;
+}
+.pizza-tartiflette { 
+    background: #921a1c url('images double b/pizzas/TARTIFLETTE.jpg') center/200% no-repeat;
+}
+.pizza-savoyarde { 
+    background: #921a1c url('images double b/pizzas/savoyarde.png') center/200% no-repeat;
+}
+.pizza-mielleuse { 
+    background: #921a1c url('images double b/pizzas/mielleuse.png') center/200% no-repeat;
+}
+.pizza-boisee { 
+    background: #921a1c url('images double b/pizzas/boisee.png') center/200% no-repeat;
+}
+
+
+/* Images des pizzas manquantes */
+.pizza-boursin { 
+    background: #921a1c url('images double b/pizzas/boursin.png') center/200% no-repeat;
+}
+.pizza-carbonara { 
+    background: #921a1c url('images double b/pizzas/carbonara.png') center/200% no-repeat;
+}
+.pizza-paysanne { 
+    background: #921a1c url('images double b/pizzas/paysanne.png') center/200% no-repeat;
+}
+.pizza-mexicaine { 
+    background: #921a1c url('images double b/pizzas/mexicaine.png') center/200% no-repeat;
+}
+
+
+/* Images des assiettes et salades */
+.assiette-simple { 
+    background: #921a1c url('images double b/assiette.png') center/200% no-repeat;
+}
+.salade-cesar { 
+    background: #921a1c url('images double b/salades/salade.png') center/200% no-repeat;
+}
+.salade-nicoise { 
+    background: #921a1c url('images double b/salades/salade.png') center/200% no-repeat;
 }
 
 /* Assiettes Images */
@@ -956,6 +1298,42 @@ section#tacos.menu-section .section-title {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     backdrop-filter: blur(10px);
+}
+
+/* Conteneurs de sections pour s'assurer qu'ils s'étendent correctement */
+.sandwichs-section-content,
+.burgers-section-content,
+.bowls-section-content,
+.pizzas-section-content,
+.assiettes-section-content {
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-bottom: 40px !important;
+    display: block !important;
+    position: static !important;
+    z-index: auto !important;
+    transition: max-height 0.5s ease, height 0.5s ease, opacity 0.3s ease, padding 0.3s ease !important;
+}
+
+/* Espacement supplémentaire pour les sous-catégories de pizzas */
+.pizzas-subcategory {
+    margin-bottom: 50px !important;
+    padding-bottom: 30px !important;
+    position: static !important;
+    z-index: auto !important;
+    overflow: visible !important;
+}
+
+.pizzas-subcategory:last-child {
+    margin-bottom: 20px !important;
+}
+
+/* S'assurer que les grilles de pizzas ne causent pas de problèmes de positionnement */
+.pizzas-grid {
+    position: static !important;
+    z-index: auto !important;
+    overflow: visible !important;
 }
 
 .compose-title {
@@ -1508,7 +1886,9 @@ section#tacos.menu-section .section-title {
     .tacos-grid,
     .signatures-grid,
     .sandwichs-grid,
-    .assiettes-grid {
+    .pizzas-grid,
+    .assiettes-grid,
+    .salades-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
@@ -1575,6 +1955,65 @@ section#tacos.menu-section .section-title {
     }
 }
 
+/* Tablette Styles */
+@media (max-width: 968px) and (min-width: 769px) {
+    .title-with-image .section-title-dark {
+        max-width: calc(100% - 200px);
+        font-size: 2.2rem;
+    }
+    
+    .title-supplement-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .supplement-price {
+        font-size: 1.6rem;
+    }
+}
+
+/* Optimisations mobiles supplémentaires */
+@media (max-width: 480px) {
+    /* Interface tactile optimisée */
+    .category-header, .subcategory-header {
+        min-height: 44px !important; /* Taille minimum recommandée pour les éléments tactiles */
+        padding: 12px 16px !important;
+    }
+    
+    .menu-item {
+        min-height: 44px !important;
+    }
+    
+    /* Boutons plus grands pour mobile */
+    .floating-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.2rem !important;
+    }
+    
+    /* Espacement amélioré */
+    .container {
+        padding: 0 10px !important;
+    }
+    
+    /* Texte plus lisible */
+    .menu-item h3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .menu-item p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Amélioration badges mobiles */
+    .menu-badge, .menu-badge-center {
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+        margin: 15px auto 15px !important;
+    }
+}
+
 @media (max-width: 768px) {
     .burgers-grid,
     .incontournables-grid,
@@ -1583,7 +2022,9 @@ section#tacos.menu-section .section-title {
     .tacos-grid,
     .signatures-grid,
     .sandwichs-grid,
-    .assiettes-grid {
+    .pizzas-grid,
+    .assiettes-grid,
+    .salades-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1597,6 +2038,30 @@ section#tacos.menu-section .section-title {
         padding: 8px 15px !important;
     }
     
+    /* Hamburger optimisé pour mobile */
+    .hamburger {
+        padding: 15px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+    }
+    
+    .hamburger span {
+        width: 25px !important;
+        height: 3px !important;
+    }
+    
+    /* Menu mobile optimisé */
+    .nav__mobile {
+        width: 100vw !important;
+        left: -100vw !important;
+        transform: translateX(-100vw) !important;
+    }
+    
+    .nav__mobile.active {
+        left: 0 !important;
+        transform: translateX(0) !important;
+    }
+    
     .section-title-dark.category-header .toggle-icon {
         font-size: 1.8rem !important;
     }
@@ -1605,8 +2070,8 @@ section#tacos.menu-section .section-title {
     .signature-savoyard,
     .signature-forestier,
     .signature-cheesy {
-        background-size: 250% !important;
-        background-position: center !important;
+        background-size: 200% !important;
+        background-position: center center !important;
     }
     
     .menu-grid {
@@ -1728,6 +2193,7 @@ section#tacos.menu-section .section-title {
         text-align: center;
         align-items: center;
         padding: 20px 0;
+        margin-bottom: 30px;
     }
     
     .title-with-image .section-title-dark {
@@ -1777,6 +2243,28 @@ section#tacos.menu-section .section-title {
     
     .nav__logo {
         gap: 12px;
+    }
+    
+    /* Cartes suppléments responsive */
+    .pizza-supplements {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 30px 0;
+    }
+    
+    .supplement-card {
+        min-width: 250px;
+        max-width: 300px;
+        width: 90%;
+    }
+    
+    /* Badges plus compacts sur mobile */
+    .menu-badge, .menu-badge-center {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        margin: 30px auto 20px;
+        gap: 6px;
     }
     
     .logo-circle {
@@ -1842,12 +2330,13 @@ section#tacos.menu-section .section-title {
     .signature-savoyard,
     .signature-forestier,
     .signature-cheesy {
-        background-size: 300% !important;
-        min-height: 180px !important;
+        background-size: 220% !important;
+        background-position: center center !important;
+        min-height: 200px !important;
     }
     
     .signatures-grid .menu-item-image {
-        min-height: 180px !important;
+        min-height: 200px !important;
     }
 }
 
@@ -2075,6 +2564,8 @@ section#tacos.menu-section .section-title {
     align-items: center !important;
     transition: all 0.3s ease !important;
     user-select: none;
+    -webkit-tap-highlight-color: rgba(146, 26, 28, 0.3);
+    touch-action: manipulation;
 }
 
 .category-header:hover {
@@ -2093,16 +2584,45 @@ section#tacos.menu-section .section-title {
 }
 
 .category-content {
-    max-height: 1000px;
+    max-height: 2000px;
     overflow: hidden;
     transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
     opacity: 1;
+    position: static;
+    z-index: auto;
+}
+
+/* Hauteur spécifique plus grande pour les sections de menu avec plusieurs tuiles */
+.sandwichs-section-content,
+.burgers-section-content {
+    max-height: 3000px !important;
+}
+
+/* Hauteur encore plus grande pour la section pizzas (23 pizzas + 3 sous-catégories) */
+.pizzas-section-content {
+    max-height: none !important;
+    height: auto !important;
+    position: static !important;
+    z-index: auto !important;
 }
 
 .category-content.collapsed {
-    max-height: 0;
+    max-height: 0 !important;
     opacity: 0;
     padding: 0 !important;
+}
+
+/* Assurer que les sections spéciales se replient correctement */
+.sandwichs-section-content.collapsed,
+.burgers-section-content.collapsed,
+.bowls-section-content.collapsed,
+.pizzas-section-content.collapsed,
+.assiettes-section-content.collapsed {
+    max-height: 0 !important;
+    height: 0 !important;
+    opacity: 0;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
 /* Animation pour l'image de catégorie dans les crudités */
