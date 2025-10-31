@@ -42,14 +42,14 @@ body {
 
 /* Header Styles */
 .header {
-position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(15px);
     z-index: 1000;
-padding: 0.5rem 0;
+    padding: 1rem 0;
     transition: all 0.3s ease;
     border-bottom: 2px solid var(--primary-red);
 }
@@ -89,7 +89,7 @@ padding: 0.5rem 0;
 
 .nav__logo h1 {
     color: var(--white);
-font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -178,7 +178,7 @@ font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-padding: 80px 20px 50px;
+    padding: 120px 20px 50px;
     position: relative;
     overflow: hidden;
 }
