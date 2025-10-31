@@ -189,19 +189,21 @@ section,
 .nav__list {
     list-style: none;
     padding: 0 30px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
 }
 
 .nav__item {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .nav__link {
     color: var(--white);
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     display: block;
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -807,6 +809,17 @@ section#tacos.menu-section .section-title {
 .le-savoyard { background: linear-gradient(45deg, #8e44ad, #9b59b6); }
 .le-forestier { background: linear-gradient(45deg, #27ae60, #2ecc71); }
 .le-cheesy { background: linear-gradient(45deg, #f39c12, #e67e22); }
+
+/* Images des signatures dans la section tacos */
+.signature-savoyard { 
+    background: #921a1c url('images double b/signatures/le_savoyard.png') center/150% no-repeat;
+}
+.signature-forestier { 
+    background: #921a1c url('images double b/signatures/le_forestier.png') center/150% no-repeat;
+}
+.signature-cheesy { 
+    background: #921a1c url('images double b/signatures/le_cheesy.png') center/150% no-repeat;
+}
 
 /* Assiettes Images */
 .simple-viande { background: linear-gradient(45deg, #e74c3c, #c0392b); }
@@ -1418,6 +1431,51 @@ section#tacos.menu-section .section-title {
     display: none;
 }
 
+/* Section Nos Signatures */
+.signatures-banner-section {
+    margin: 40px 0;
+    padding: 0;
+}
+
+.signatures-badge {
+    background: linear-gradient(45deg, var(--accent-gold), #FFE55C) !important;
+    color: var(--primary-red) !important;
+    font-size: 1.4rem !important;
+    font-weight: 900 !important;
+    padding: 20px 40px !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 30px !important;
+    border: 3px solid var(--primary-red) !important;
+}
+
+.signatures-badge i {
+    font-size: 1.2rem;
+    margin: 0 10px;
+    animation: twinkle 2s infinite;
+}
+
+.signatures-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Animation des étoiles */
+@keyframes twinkle {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .burgers-grid,
@@ -1469,6 +1527,23 @@ section#tacos.menu-section .section-title {
     .gratine-ingredients {
         grid-template-columns: repeat(3, 1fr);
     }
+    
+    /* Amélioration sauces pour tablettes */
+    .sauces-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+    }
+    
+    .sauce-rectangle {
+        width: 110px !important;
+        height: 70px !important;
+        border-radius: 10px !important;
+    }
+    
+    .sauce-rectangle::after {
+        font-size: 12px !important;
+        border-radius: 7px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1481,6 +1556,20 @@ section#tacos.menu-section .section-title {
     .sandwichs-grid,
     .assiettes-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .signatures-badge {
+        font-size: 1.2rem !important;
+        padding: 15px 25px !important;
+    }
+    
+    .section-title-dark.category-header {
+        font-size: 2rem !important;
+        padding: 8px 15px !important;
+    }
+    
+    .section-title-dark.category-header .toggle-icon {
+        font-size: 1.8rem !important;
     }
     
     .menu-grid {
@@ -1542,6 +1631,25 @@ section#tacos.menu-section .section-title {
     .ingredient-image {
         width: 50px;
         height: 50px;
+    }
+    
+    /* Grille spécifique pour les sauces sur mobile */
+    .sauces-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 10px !important;
+    }
+    
+    .sauce-rectangle {
+        width: 100px !important;
+        height: 60px !important;
+        border-radius: 8px !important;
+    }
+    
+    .sauce-rectangle::after {
+        font-size: 11px !important;
+        border-radius: 6px;
+        padding: 3px;
     }
     
     .floating-buttons {
@@ -1661,6 +1769,27 @@ section#tacos.menu-section .section-title {
     
     .gratine-option-section {
         padding: 30px 20px;
+    }
+    
+    /* Améliorations sauces pour très petits écrans */
+    .sauces-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        padding: 8px !important;
+    }
+    
+    .sauce-rectangle {
+        width: 90px !important;
+        height: 55px !important;
+        border-radius: 6px !important;
+        border-width: 2px !important;
+    }
+    
+    .sauce-rectangle::after {
+        font-size: 10px !important;
+        border-radius: 4px;
+        padding: 2px;
+        line-height: 1.1;
     }
 }
 
@@ -1878,4 +2007,139 @@ section#tacos.menu-section .section-title {
 
 .blanche-sauce {
     background-image: url('images double b/sauces/sauce_blanche.png');
+}
+
+/* Styles pour les catégories pliables/dépliables */
+.category-header {
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    transition: all 0.3s ease !important;
+    user-select: none;
+}
+
+.category-header:hover {
+    background: #FFE55C !important;
+    transform: translateY(-2px);
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: var(--primary-red);
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.category-content {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+
+.category-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 !important;
+}
+
+/* Animation pour l'image de catégorie dans les crudités */
+.category-image-container {
+    max-height: 200px;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.category-image-container.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+/* Style spécial pour les headers actifs */
+.category-header.active {
+    background: #FFE55C !important;
+}
+
+/* Styles spéciaux pour la section tacos complète pliable */
+.section-title-dark.category-header {
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    transition: all 0.3s ease !important;
+    user-select: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-bottom: 20px !important;
+}
+
+.section-title-dark.category-header:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+}
+
+.section-title-dark.category-header .toggle-icon {
+    color: var(--accent-gold) !important;
+    font-size: 2.5rem !important;
+}
+
+.tacos-section-content {
+    max-height: 5000px;
+    overflow: hidden;
+    transition: max-height 0.8s ease, opacity 0.4s ease, padding 0.4s ease;
+    opacity: 1;
+}
+
+.tacos-section-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 !important;
+}
+
+.section-title-dark.category-header.active {
+    background: rgba(255, 215, 0, 0.3) !important;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+}
+
+/* Styles spéciaux pour la section gratiné pliable */
+.gratine-option-title.category-header {
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    transition: all 0.3s ease !important;
+    user-select: none;
+    margin-bottom: 10px !important;
+}
+
+.gratine-option-title.category-header:hover {
+    background: rgba(255, 215, 0, 0.2) !important;
+    transform: translateY(-2px);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.gratine-content {
+    max-height: 2000px;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+
+.gratine-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 !important;
+}
+
+.gratine-option-title.category-header.active {
+    background: rgba(255, 215, 0, 0.2) !important;
+    border-radius: 10px;
+    padding: 10px 20px;
 }

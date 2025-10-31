@@ -26,10 +26,9 @@
         <div class="nav__mobile" id="nav-mobile">
             <ul class="nav__list">
                 <li class="nav__item"><a href="#hero" class="nav__link">Accueil</a></li>
-                <li class="nav__item"><a href="#burgers" class="nav__link">Nos Burgers</a></li>
                 <li class="nav__item"><a href="#tacos" class="nav__link">Nos Tacos</a></li>
-                <li class="nav__item"><a href="#signatures" class="nav__link">Nos Signatures</a></li>
-                <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                <li class="nav__item"><a href="#contact" class="nav__link">Contactez-nous</a></li>
+                <li class="nav__item"><a href="#commander" class="nav__link">Commandez en ligne</a></li>
             </ul>
         </div>
     </header>
@@ -68,12 +67,17 @@
     <section class="special-section" id="tacos">
         <div class="container">
             <div class="title-with-image">
-                <h2 class="section-title-dark">Nos Tacos</h2>
+                <h2 class="section-title-dark category-header" onclick="toggleCategory('tacos-section')">
+                    Nos Tacos
+                    <i class="fas fa-chevron-down toggle-icon" id="tacos-section-icon"></i>
+                </h2>
                 <div class="image-with-price">
                     <img src="images double b/supp_menu.png" alt="Supplément menu" class="title-supplement-image">
                     <span class="supplement-price">+3€</span>
                 </div>
             </div>
+            
+            <div class="tacos-section-content category-content" id="tacos-section-content">
             
             <!-- Sauce info -->
             <div class="sauce-info">
@@ -108,13 +112,52 @@
                 </div>
             </div>
 
+            <!-- Section Nos Signatures -->
+            <div class="signatures-banner-section" id="signatures">
+                <div class="menu-badge-center signatures-badge">
+                    <i class="fas fa-star"></i>
+                    Nos Signatures
+                    <i class="fas fa-star"></i>
+                </div>
+                
+                <div class="signatures-grid menu-grid">
+                    <div class="menu-item dark">
+                        <div class="menu-item-image signature-savoyard"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Savoyard</h3>
+                            <p>Tenders, jambon, raclette, frites, crudités</p>
+                            <span class="price">8.90€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image signature-forestier"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Forestier</h3>
+                            <p>Escalope, champignons, Boursin, frites, crudités</p>
+                            <span class="price">8.90€</span>
+                        </div>
+                    </div>
+                    <div class="menu-item dark">
+                        <div class="menu-item-image signature-cheesy"></div>
+                        <div class="menu-item-content">
+                            <h3>Le Cheesy</h3>
+                            <p>Steak ou Tenders, crème de cheddar, frites, emmental, mozzarella, crudités</p>
+                            <span class="price">8.90€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Section Compose ton Tacos -->
             <div class="compose-section">
                 <h3 class="compose-title">Compose Ton Tacos</h3>
                 <div class="compose-grid">
                     <div class="compose-category">
-                        <h4>Ta Viande 2€</h4>
-                        <div class="ingredients-grid">
+                        <h4 class="category-header" onclick="toggleCategory('viande')">
+                            Ta Viande 2€ 
+                            <i class="fas fa-chevron-down toggle-icon" id="viande-icon"></i>
+                        </h4>
+                        <div class="ingredients-grid category-content" id="viande-content">
                             <div class="ingredient-item">
                                 <div class="ingredient-image escalope" data-description="Escalope"></div>
                             </div>
@@ -151,8 +194,11 @@
                         </div>
                     </div>
                     <div class="compose-category">
-                        <h4>Ta Sauce</h4>
-                        <div class="ingredients-grid sauces-grid">
+                        <h4 class="category-header" onclick="toggleCategory('sauce')">
+                            Ta Sauce 
+                            <i class="fas fa-chevron-down toggle-icon" id="sauce-icon"></i>
+                        </h4>
+                        <div class="ingredients-grid sauces-grid category-content" id="sauce-content">
                             <div class="ingredient-item sauce-item">
                                 <div class="ingredient-image sauce-rectangle harissa-sauce" data-description="Harissa"></div>
                             </div>
@@ -189,8 +235,11 @@
                         </div>
                     </div>
                     <div class="compose-category">
-                        <h4>Ta Crudité</h4>
-                        <div class="ingredients-grid">
+                        <h4 class="category-header" onclick="toggleCategory('crudite')">
+                            Ta Crudité 
+                            <i class="fas fa-chevron-down toggle-icon" id="crudite-icon"></i>
+                        </h4>
+                        <div class="ingredients-grid category-content" id="crudite-content">
                             <div class="ingredient">Salade</div>
                             <div class="ingredient">Tomates</div>
                             <div class="ingredient">Oignons</div>
@@ -200,8 +249,11 @@
                         </div>
                     </div>
                     <div class="compose-category">
-                        <h4>Ton Fromage 1€</h4>
-                        <div class="ingredients-grid">
+                        <h4 class="category-header" onclick="toggleCategory('fromage')">
+                            Ton Fromage 1€ 
+                            <i class="fas fa-chevron-down toggle-icon" id="fromage-icon"></i>
+                        </h4>
+                        <div class="ingredients-grid category-content" id="fromage-content">
                             <div class="ingredient-item">
                                 <div class="ingredient-image mozza" data-description="Mozzarella"></div>
                             </div>
@@ -236,8 +288,12 @@
 
             <!-- Option Gratiné -->
             <div class="gratine-option-section">
-                <h3 class="gratine-option-title">Option Gratiné</h3>
-                <div class="gratine-subtitle">Tacos & Roulé</div>
+                <h3 class="gratine-option-title category-header" onclick="toggleCategory('gratine')">
+                    Option Gratiné 
+                    <i class="fas fa-chevron-down toggle-icon" id="gratine-icon"></i>
+                </h3>
+                <div class="gratine-content category-content" id="gratine-content">
+                    <div class="gratine-subtitle">Tacos & Roulé</div>
                 
                 <div class="gratine-prices">
                     <div class="gratine-price">
@@ -280,6 +336,8 @@
                         <span>Mozzarella</span>
                     </div>
                 </div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
