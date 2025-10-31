@@ -90,7 +90,7 @@ section,
 .nav__logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .logo-circle {
@@ -119,11 +119,34 @@ section,
     text-transform: uppercase;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.logo-link h1 {
+    margin: 0;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
 .nav-logo-img {
-    width: 35px !important;
-    height: 35px !important;
+    width: 45px !important;
+    height: 45px !important;
     border-radius: 50%;
     object-fit: cover;
+    display: block;
 }
 
 .hero-logo-img {
@@ -812,13 +835,13 @@ section#tacos.menu-section .section-title {
 
 /* Images des signatures dans la section tacos */
 .signature-savoyard { 
-    background: #921a1c url('images double b/signatures/le_savoyard.png') center/150% no-repeat;
+    background: #921a1c url('images double b/signatures/le_savoyard.png') center/200% no-repeat;
 }
 .signature-forestier { 
-    background: #921a1c url('images double b/signatures/le_forestier.png') center/150% no-repeat;
+    background: #921a1c url('images double b/signatures/le_forestier.png') center/200% no-repeat;
 }
 .signature-cheesy { 
-    background: #921a1c url('images double b/signatures/le_cheesy.png') center/150% no-repeat;
+    background: #921a1c url('images double b/signatures/le_cheesy.png') center/200% no-repeat;
 }
 
 /* Assiettes Images */
@@ -1528,6 +1551,12 @@ section#tacos.menu-section .section-title {
         grid-template-columns: repeat(3, 1fr);
     }
     
+    /* Signatures sur tablettes - 2 colonnes */
+    .signatures-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 25px !important;
+    }
+    
     /* Amélioration sauces pour tablettes */
     .sauces-grid {
         grid-template-columns: repeat(3, 1fr) !important;
@@ -1570,6 +1599,14 @@ section#tacos.menu-section .section-title {
     
     .section-title-dark.category-header .toggle-icon {
         font-size: 1.8rem !important;
+    }
+    
+    /* Optimisation des images signatures sur mobile */
+    .signature-savoyard,
+    .signature-forestier,
+    .signature-cheesy {
+        background-size: 250% !important;
+        background-position: center !important;
     }
     
     .menu-grid {
@@ -1730,7 +1767,16 @@ section#tacos.menu-section .section-title {
     }
     
     .nav__logo h1 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+    }
+    
+    .nav-logo-img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    .nav__logo {
+        gap: 12px;
     }
     
     .logo-circle {
@@ -1790,6 +1836,18 @@ section#tacos.menu-section .section-title {
         border-radius: 4px;
         padding: 2px;
         line-height: 1.1;
+    }
+    
+    /* Optimisation supplémentaire des signatures sur très petits écrans */
+    .signature-savoyard,
+    .signature-forestier,
+    .signature-cheesy {
+        background-size: 300% !important;
+        min-height: 180px !important;
+    }
+    
+    .signatures-grid .menu-item-image {
+        min-height: 180px !important;
     }
 }
 
