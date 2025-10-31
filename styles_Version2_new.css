@@ -1512,6 +1512,15 @@ section#tacos.menu-section .section-title {
     
     .compose-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .compose-section {
+        padding: 20px 10px;
+    }
+    
+    .compose-category {
+        margin-bottom: 20px;
     }
     
     .gratine-prices {
@@ -1521,6 +1530,18 @@ section#tacos.menu-section .section-title {
     
     .gratine-ingredients {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Grilles d'ingrédients sur mobile */
+    .ingredients-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .ingredient-image {
+        width: 50px;
+        height: 50px;
     }
     
     .floating-buttons {
@@ -1560,18 +1581,32 @@ section#tacos.menu-section .section-title {
         flex-direction: column;
         gap: 20px;
         text-align: center;
+        align-items: center;
+        padding: 20px 0;
     }
     
     .title-with-image .section-title-dark {
-        position: relative;
+        position: static;
         left: auto;
         transform: none;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        font-size: 2rem;
     }
     
     .image-with-price {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .title-supplement-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .supplement-price {
+        font-size: 1.4rem;
     }
 }
 
