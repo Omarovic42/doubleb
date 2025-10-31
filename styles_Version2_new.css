@@ -1780,3 +1780,102 @@ section#tacos.menu-section .section-title {
         transform: none;
     }
 }
+
+/* Styles pour les rectangles de sauces */
+.sauce-rectangle {
+    width: 120px !important;
+    height: 80px !important;
+    border-radius: 12px !important;
+    background-color: #8B1538 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 3px solid #8B1538;
+}
+
+.sauce-rectangle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(139, 21, 56, 0.4);
+}
+
+.sauce-rectangle::after {
+    content: attr(data-description);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 9px;
+}
+
+.sauce-rectangle:hover::after {
+    opacity: 1;
+}
+
+.sauces-grid {
+    gap: 15px !important;
+}
+
+.sauce-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Classes pour chaque sauce avec leurs images */
+.harissa-sauce {
+    background-image: url('images double b/sauces/harissa.png');
+}
+
+.mayo-sauce {
+    background-image: url('images double b/sauces/mayonnaise.png');
+}
+
+.fish-sauce {
+    background-image: url('images double b/sauces/fish.png');
+}
+
+.ketchup-sauce {
+    background-image: url('images double b/sauces/ketchup.png');
+}
+
+.curry-sauce {
+    background-image: url('images double b/sauces/curry.png');
+}
+
+.barbecue-sauce {
+    background-image: url('images double b/sauces/barbecue.png');
+}
+
+.burger-sauce {
+    background-image: url('images double b/sauces/burger.png');
+}
+
+.tartare-sauce {
+    background-image: url('images double b/sauces/tartare.png');
+}
+
+.algerienne-sauce {
+    background-image: url('images double b/sauces/algerienne.png');
+}
+
+.samourai-sauce {
+    background-image: url('images double b/sauces/samourai.png');
+}
+
+.blanche-sauce {
+    background-image: url('images double b/sauces/sauce_blanche.png');
+}
