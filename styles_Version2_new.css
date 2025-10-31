@@ -8,6 +8,74 @@
     box-sizing: border-box !important;
 }
 
+/* CORRECTION CRITIQUE - Force absolue de visibilité du hamburger */
+.header,
+#header {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10000 !important;
+    width: 100% !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    overflow: visible !important;
+    max-width: none !important;
+}
+
+button.hamburger,
+#hamburger,
+.hamburger {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    z-index: 1001 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 4px !important;
+    width: 44px !important;
+    height: 44px !important;
+    max-width: none !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    overflow: visible !important;
+    padding: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+button.hamburger span,
+#hamburger span,
+.hamburger span {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    width: 22px !important;
+    height: 2.5px !important;
+    border-radius: 1px !important;
+    margin: 3px auto !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+/* Effet de survol ton sur ton */
+button.hamburger:hover,
+#hamburger:hover,
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px !important;
+}
+
+button.hamburger:hover span,
+#hamburger:hover span,
+.hamburger:hover span {
+    background: rgba(255, 255, 255, 1) !important;
+    opacity: 0.8 !important;
+}
+
 /* Prévention ciblée des débordements horizontaux */
 section, main, article, aside, header, footer {
     overflow-x: hidden;
@@ -22,9 +90,26 @@ section, main, article, aside, header, footer {
     width: 100% !important;
 }
 
-.floating-buttons, .menu-item {
-    overflow-x: visible;
-    max-width: none;
+.floating-buttons, .menu-item, .hamburger, .hamburger span, .nav, .nav__logo, .header {
+    overflow-x: visible !important;
+    max-width: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: block !important;
+}
+
+/* Force supplémentaire pour la nav */
+.nav, 
+#nav,
+nav {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    max-width: 1400px !important;
+    position: relative !important;
+    z-index: 10000 !important;
 }
 
 html {
@@ -137,12 +222,16 @@ section,
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    width: 100% !important;
 }
 
 .nav__logo {
@@ -232,28 +321,40 @@ section,
 }
 
 .hamburger {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 12px; /* Plus grande zone tactile */
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    z-index: 1001;
-    min-width: 44px; /* Taille tactile minimum */
-    min-height: 44px; /* Taille tactile minimum */
-    justify-content: center;
-    align-items: center;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
-    touch-action: manipulation;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    z-index: 1001 !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3) !important;
+    touch-action: manipulation !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    overflow: visible !important;
+    max-width: none !important;
+    width: auto !important;
 }
 
 .hamburger span {
-    width: 22px;
-    height: 2.5px;
-    background: var(--white);
-    transition: 0.3s;
-    border-radius: 2px;
+    width: 22px !important;
+    height: 2.5px !important;
+    background: var(--white) !important;
+    transition: 0.3s !important;
+    border-radius: 2px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    max-width: none !important;
 }
 
 .hamburger.active span:nth-child(1) {
