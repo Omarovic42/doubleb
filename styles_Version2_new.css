@@ -573,6 +573,45 @@ section#tacos.menu-section .section-title {
     letter-spacing: 3px;
 }
 
+.title-with-image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.title-with-image .section-title-dark {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.image-with-price {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+}
+
+.title-supplement-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.supplement-price {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--accent-gold);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 .subtitle {
     display: block;
     font-size: 2.5rem;
@@ -690,9 +729,50 @@ section#tacos.menu-section .section-title {
 .la-hot-spicy { background: linear-gradient(45deg, #e74c3c, #c0392b); }
 
 /* Tacos Images */
-.taco-classique { background: linear-gradient(45deg, #e67e22, #d35400); }
-.maxi-tacos { background: linear-gradient(45deg, #c0392b, #a93226); }
-.pate-pizza { background: linear-gradient(45deg, #27ae60, #229954); }
+.taco-classique { 
+    background: #921a1c url('images double b/nos tacos/le_classique.png') center/200% no-repeat;
+}
+.maxi-tacos { 
+    background: #921a1c url('images double b/nos tacos/maxi_tacos.png') center/150% no-repeat;
+}
+.pate-pizza { 
+    background: #921a1c url('images double b/nos tacos/roule.png') center/150% no-repeat;
+}
+
+/* Viandes Images */
+.cordon-bleu { 
+    background: #921a1c url('images double b/viandes/cordon_bleu.png') center/2500% no-repeat;
+}
+.escalope { 
+    background: #921a1c url('images double b/viandes/escalope.png') center/100% no-repeat;
+}
+.escalope-tandoori { 
+    background: #921a1c url('images double b/viandes/escalope_tandoori.png') center/2500% no-repeat;
+}
+.escalope-texmex { 
+    background: #921a1c url('images double b/viandes/escalope_texmex.png') center/2500% no-repeat;
+}
+.escalope-white { 
+    background: #921a1c url('images double b/viandes/escalope_white.png') center/2500% no-repeat;
+}
+.jambon { 
+    background: #921a1c url('images double b/viandes/jambon.png') center/2500% no-repeat;
+}
+.kebab { 
+    background: #921a1c url('images double b/viandes/kebab.png') center/2500% no-repeat;
+}
+.kefta { 
+    background: #921a1c url('images double b/viandes/kefta.png') center/2500% no-repeat;
+}
+.nuggets { 
+    background: #921a1c url('images double b/viandes/nuggets.png') center/2500% no-repeat;
+}
+.steak { 
+    background: #921a1c url('images double b/viandes/steak.png') center/2500% no-repeat;
+}
+.tenders { 
+    background: #921a1c url('images double b/viandes/tenders.png') center/2500% no-repeat;
+}
 
 /* Signatures Images */
 .le-savoyard { background: linear-gradient(45deg, #8e44ad, #9b59b6); }
@@ -935,6 +1015,19 @@ section#tacos.menu-section .section-title {
 .ingredient-item {
     text-align: center;
     color: var(--white);
+    position: relative;
+    cursor: pointer;
+}
+
+.ingredient-item span {
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+}
+
+.ingredient-item:hover span {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ingredient-image {
@@ -945,6 +1038,41 @@ section#tacos.menu-section .section-title {
     background-size: cover;
     background-position: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.ingredient-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Overlay au centre du cercle */
+.ingredient-image::after {
+    content: attr(data-description);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+    line-height: 1.2;
+    padding: 5px;
+}
+
+.ingredient-image:hover::after {
+    opacity: 1;
 }
 
 /* Contact Section */
