@@ -1,12 +1,17 @@
-.header {
-    position: sticky;
-    padding: 0.5rem;
-}
+/* Assuming existing content above this part remains unchanged */
 
-.logo {
-    font-size: 1.5rem;
-}
+/* ... Other CSS rules ... */
 
-.hero {
-    padding-top: 80px;
-}
+/* Change 1: Line 45 */
+position: sticky;
+
+/* Change 2: Line 52 */
+padding: 0.5rem 0;
+
+/* Change 3: Line 92 */
+font-size: 1.5rem;
+
+/* Change 4: Line 181 */
+padding: 80px 20px 50px;
+
+/* ... Other CSS rules ... */
