@@ -377,10 +377,10 @@ window.addEventListener('load', function() {
             newHamburger.classList.toggle('active');
             navMobile.classList.toggle('active');
             
-            // Assurer l'animation sur mobile
+            // Assurer l'animation sur mobile - SANS DÉBORDEMENT
             const willBeActive = !isCurrentlyActive;
-            navMobile.style.left = willBeActive ? '0px' : '-100vw';
-            navMobile.style.transform = willBeActive ? 'translateX(0px)' : 'translateX(-100vw)';
+            navMobile.style.left = willBeActive ? '0%' : '-100%';
+            navMobile.style.transform = willBeActive ? 'translateX(0%)' : 'translateX(-100%)';
         }
         
         // Fonction fermeture propre
