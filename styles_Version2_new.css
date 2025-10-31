@@ -774,6 +774,35 @@ section#tacos.menu-section .section-title {
     background: #921a1c url('images double b/viandes/tenders.png') center/2500% no-repeat;
 }
 
+/* Fromages Images */
+.mozza { 
+    background: #921a1c url('images double b/fromages/mozza.png') center/2500% no-repeat;
+}
+.creme-cheddar { 
+    background: #921a1c url('images double b/fromages/creme_cheddar.png') center/2500% no-repeat;
+}
+.tranche-cheddar { 
+    background: #921a1c url('images double b/fromages/tranche_cheddar.png') center/2500% no-repeat;
+}
+.vache-qui-rit { 
+    background: #921a1c url('images double b/fromages/vache_qui_rit.png') center/2500% no-repeat;
+}
+.boursin { 
+    background: #921a1c url('images double b/fromages/boursin.png') center/2500% no-repeat;
+}
+.raclette { 
+    background: #921a1c url('images double b/fromages/raclette.png') center/2500% no-repeat;
+}
+.bleu { 
+    background: #921a1c url('images double b/fromages/bleu.png') center/2500% no-repeat;
+}
+.chevre { 
+    background: #921a1c url('images double b/fromages/chevre.png') center/2500% no-repeat;
+}
+.emmental { 
+    background: #921a1c url('images double b/fromages/emmental.png') center/2500% no-repeat;
+}
+
 /* Signatures Images */
 .le-savoyard { background: linear-gradient(45deg, #8e44ad, #9b59b6); }
 .le-forestier { background: linear-gradient(45deg, #27ae60, #2ecc71); }
@@ -1073,6 +1102,25 @@ section#tacos.menu-section .section-title {
 
 .ingredient-image:hover::after {
     opacity: 1;
+}
+
+/* Image de catégorie sous les ingrédients */
+.category-image-container {
+    text-align: center;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 0 0 10px 10px;
+    margin-top: -10px;
+}
+
+.category-image {
+    max-width: 150px;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.category-image:hover {
+    transform: scale(1.05);
 }
 
 /* Contact Section */
@@ -1505,6 +1553,25 @@ section#tacos.menu-section .section-title {
     
     .commander-section .section-title {
         font-size: 2rem;
+    }
+    
+    /* Correction titre avec image sur mobile */
+    .title-with-image {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .title-with-image .section-title-dark {
+        position: relative;
+        left: auto;
+        transform: none;
+        margin-bottom: 10px;
+    }
+    
+    .image-with-price {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
