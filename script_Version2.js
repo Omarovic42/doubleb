@@ -371,17 +371,16 @@ window.addEventListener('load', function() {
                 e.stopPropagation();
             }
             
-            console.log('Toggle menu called'); // Debug
+            const isCurrentlyActive = navMobile.classList.contains('active');
+            
+            // Toggle simple
             newHamburger.classList.toggle('active');
             navMobile.classList.toggle('active');
             
-            // Forcer le repaint sur mobile
-            if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                    navMobile.style.transform = navMobile.classList.contains('active') 
-                        ? 'translateX(0)' : 'translateX(-100%)';
-                }, 10);
-            }
+            // Assurer l'animation sur mobile
+            const willBeActive = !isCurrentlyActive;
+            navMobile.style.left = willBeActive ? '0px' : '-100vw';
+            navMobile.style.transform = willBeActive ? 'translateX(0px)' : 'translateX(-100vw)';
         }
         
         // Fonction fermeture propre
@@ -390,11 +389,20 @@ window.addEventListener('load', function() {
             navMobile.classList.remove('active');
         }
         
-        // Event listeners pour le hamburger (click et touch)
-        newHamburger.addEventListener('click', toggleMenu);
+        // Event listeners optimisés
+        newHamburger.addEventListener('click', function(e) {
+            toggleMenu(e);
+        });
+        
+        newHamburger.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu(e);
+        }, { passive: false });
+        
+        // Empêcher le scroll pendant le touch
         newHamburger.addEventListener('touchstart', function(e) {
             e.preventDefault();
-            toggleMenu(e);
         }, { passive: false });
         
         // Fermer en cliquant à l'extérieur
@@ -424,7 +432,6 @@ window.addEventListener('load', function() {
         });
         
         isInitialized = true;
-        console.log('Menu hamburger correctement initialisé');
     }
     
     // Initialiser dès que possible
