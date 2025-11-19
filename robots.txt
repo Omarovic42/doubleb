@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://doubleb-restaurant.fr/sitemap.xml
+
+# Optimisations pour les moteurs de recherche
+Crawl-delay: 1
+
+# Fichiers à ne pas indexer
+Disallow: /styles_Version2_new.css
+Disallow: /script_Version2.js
+
+# Autoriser l'indexation des images
+Allow: /images double b/

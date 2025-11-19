@@ -1,0 +1,76 @@
+{
+    "name": "Double B - Restaurant Fast-Food Saint-Étienne",
+    "short_name": "Double B",
+    "description": "Le meilleur restaurant fast-food de Saint-Étienne. Tacos, burgers, pizzas, bowls et sandwichs.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#8B1538",
+    "theme_color": "#8B1538",
+    "orientation": "portrait-primary",
+    "categories": ["food", "restaurant", "business"],
+    "lang": "fr",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "images double b/logo_1.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images double b/logo_1.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images double b/logo_2.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Voir le Menu",
+            "short_name": "Menu",
+            "description": "Consulter notre menu complet",
+            "url": "/menu_double_b.pdf",
+            "icons": [
+                {
+                    "src": "images double b/supp_menu.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Appeler",
+            "short_name": "Téléphone",
+            "description": "Nous contacter par téléphone",
+            "url": "tel:0983924771",
+            "icons": [
+                {
+                    "src": "images double b/logo_1.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "web",
+            "url": "https://doubleb-restaurant.fr/"
+        }
+    ],
+    "prefer_related_applications": false,
+    "scope": "/",
+    "screenshots": [
+        {
+            "src": "images double b/logo_1.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Interface principale du restaurant Double B"
+        }
+    ]
+}

@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initScrollAnimations();
     initLazyLoading();
+    trackUserEngagement();
 });
 
 // Navigation - désactivée pour éviter les conflits avec le nouveau gestionnaire hamburger
@@ -244,6 +245,40 @@ function trackEvent(action, category, label) {
             event_label: label
         });
     }
+    
+    // Alternative: envoyer à Google Analytics 4
+    if (typeof dataLayer !== 'undefined') {
+        dataLayer.push({
+            'event': 'custom_event',
+            'event_action': action,
+            'event_category': category,
+            'event_label': label
+        });
+    }
+}
+
+// SEO: Tracking d'engagement utilisateur
+function trackUserEngagement() {
+    // Temps passé sur la page
+    let startTime = Date.now();
+    
+    window.addEventListener('beforeunload', () => {
+        const timeSpent = Math.round((Date.now() - startTime) / 1000);
+        trackEvent('engagement', 'time_on_page', timeSpent);
+    });
+    
+    // Scroll depth tracking
+    let maxScroll = 0;
+    window.addEventListener('scroll', debounce(() => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll) {
+            maxScroll = scrollPercent;
+            if (maxScroll >= 25 && maxScroll < 50) trackEvent('scroll', 'page_scroll', '25%');
+            if (maxScroll >= 50 && maxScroll < 75) trackEvent('scroll', 'page_scroll', '50%');
+            if (maxScroll >= 75 && maxScroll < 90) trackEvent('scroll', 'page_scroll', '75%');
+            if (maxScroll >= 90) trackEvent('scroll', 'page_scroll', '90%');
+        }
+    }, 1000));
 }
 
 // Track important interactions
